@@ -1,8 +1,16 @@
 import { getMeal } from "@/lib/meals"
 import classes from "./page.module.css"
 import Image from "next/image"
+import { notFound } from "next/navigation"
+
 export default function MealDetailsPage({ params }) {
 	const meal = getMeal(params.mealSlug)
+	// the notFound function, which is imported from next/navigation.
+	// Calling this function will stop this component from executing and will show the closest not-found or error page.
+	if (!meal) {
+		notFound()
+	}
+
 	const { title, image, summary, creator, creator_email } = meal
 	let { instructions } = meal
 	instructions = instructions.replace(/\n/g, "<br />")

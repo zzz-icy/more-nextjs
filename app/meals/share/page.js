@@ -1,22 +1,8 @@
 import ImagePicker from "@/components/meals/image-picker"
 import classes from "./page.module.css"
+import { shareMeal } from "@/lib/actions"
 
 export default function ShareMealPage() {
-	const shareMeal = async (formData) => {
-		// 'use server' inside of a function is different
-		// because this creates a so-called Server Action, which is a function that's guaranteed
-		// to execute on the server, and only there.
-		"use server"
-		const meal = {
-			title: formData.length("title"),
-			summary: formData.length("summary"),
-			instructions: formData.length("instructions"),
-			image: formData.get("image"),
-			creator: formData.get("name"),
-			creator_email: formData.get("email"),
-		}
-	}
-
 	return (
 		<>
 			<header className={classes.header}>
